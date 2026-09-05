@@ -1,0 +1,87 @@
+name: Beta feedback
+description: Share a bug, usability problem, suggestion, or other Beta experience.
+title: "[Beta Feedback]: "
+labels:
+  - feedback
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping test Spectrune. Never include a license key, invitation code, password, access token, or other secret in this form.
+
+  - type: dropdown
+    id: feedback_type
+    attributes:
+      label: Feedback type
+      description: Which category best describes this feedback?
+      options:
+        - Bug or unexpected behavior
+        - Usability or workflow problem
+        - Feature suggestion
+        - Performance or reliability
+        - General feedback
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What happened, or what would you like us to understand?
+      placeholder: Describe the feedback in your own words.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps or context
+      description: If applicable, explain what you were doing and how someone could reproduce the experience.
+      placeholder: List the steps, project context, or workflow that led to this feedback.
+    validations:
+      required: false
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+      description: What did you expect to happen instead?
+    validations:
+      required: false
+
+  - type: input
+    id: beta_version
+    attributes:
+      label: Spectrune Beta version or build
+      description: Enter the visible Beta version or build identifier. Do not enter your license key.
+      placeholder: "Example: 0.13.0-beta.2"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options:
+        - Windows
+        - macOS
+        - Other or not applicable
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Screenshots, logs, or additional context
+      description: Remove license keys, file paths containing personal information, and other secrets before attaching anything.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: secret_check
+    attributes:
+      label: Sensitive-information check
+      options:
+        - label: I have not included a license key, invitation code, password, access token, or other secret.
+          required: true
