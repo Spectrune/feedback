@@ -1,19 +1,19 @@
-name: Beta feedback
-description: Share a bug, usability problem, suggestion, or other Beta experience.
-title: "[Beta Feedback]: "
+name: Spectrune feedback
+description: Share a bug, usability problem, suggestion, or other Spectrune experience.
+title: "[Feedback]: "
 labels:
   - feedback
 body:
   - type: markdown
     attributes:
       value: |
-        Thank you for helping test Spectrune. Never include a license key, invitation code, password, access token, or other secret in this form.
-
+        Your feedback will be public. Don't include personal or sensitive information.
+        Never include email addresses, license keys, passwords, tokens, private file paths, or private project details.
+        This is the optional manual GitHub form. The planned in-app submission workflow still needs implementation.
   - type: dropdown
     id: feedback_type
     attributes:
       label: Feedback type
-      description: Which category best describes this feedback?
       options:
         - Bug or unexpected behavior
         - Usability or workflow problem
@@ -23,65 +23,60 @@ body:
         - Other
     validations:
       required: true
-
   - type: textarea
     id: summary
     attributes:
-      label: Summary
-      description: What happened, or what would you like us to understand?
-      placeholder: Describe the feedback in your own words.
+      label: Feedback
+      description: Describe your experience, problem, or suggestion in at least 50 characters. Do not include private data.
+      placeholder: Tell us what happened or what could be improved.
+      render: text
     validations:
       required: true
-
+      min_length: 50
+  - type: input
+    id: spectrune_version
+    attributes:
+      label: Spectrune version or build
+      description: Enter the visible app version when known. Do not enter a license key.
+    validations:
+      required: false
+  - type: input
+    id: public_feedback_user_id
+    attributes:
+      label: Public feedback-user ID (optional)
+      description: Only enter an opaque public feedback ID already provided by Spectrune. Otherwise leave blank. Never enter an email, account ID, or license key.
+    validations:
+      required: false
   - type: textarea
     id: steps
     attributes:
-      label: Steps or context
-      description: If applicable, explain what you were doing and how someone could reproduce the experience.
-      placeholder: List the steps, project context, or workflow that led to this feedback.
+      label: Steps or context (optional)
+      description: Describe the workflow or reproduction steps without private paths or project details.
+      render: text
     validations:
       required: false
-
   - type: textarea
     id: expected
     attributes:
-      label: Expected result
-      description: What did you expect to happen instead?
+      label: Expected result (optional)
+      description: What did you expect to happen?
+      render: text
     validations:
       required: false
-
-  - type: input
-    id: beta_version
-    attributes:
-      label: Spectrune Beta version or build
-      description: Enter the visible Beta version or build identifier. Do not enter your license key.
-      placeholder: "Example: 0.13.0-beta.2"
-    validations:
-      required: false
-
   - type: dropdown
     id: platform
     attributes:
-      label: Platform
+      label: Platform (optional)
       options:
         - Windows
         - macOS
         - Other or not applicable
     validations:
-      required: true
-
-  - type: textarea
-    id: evidence
-    attributes:
-      label: Screenshots, logs, or additional context
-      description: Remove license keys, file paths containing personal information, and other secrets before attaching anything.
-    validations:
       required: false
-
   - type: checkboxes
-    id: secret_check
+    id: public_feedback_check
     attributes:
-      label: Sensitive-information check
+      label: Public feedback acknowledgement
       options:
-        - label: I have not included a license key, invitation code, password, access token, or other secret.
+        - label: I understand this report is public and have left out personal information, private project data, license keys, passwords, and tokens.
           required: true
